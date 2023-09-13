@@ -4,7 +4,7 @@ const checkButton = document.getElementById('checkButton');
 const resultMessage = document.getElementById('resultMessage');
 const questionNumber = document.getElementById('questionNumber');
 const scoreDisplay = document.getElementById('score');
-const questionAndExample = document.getElementById('questionAndExample')
+const questionAndExample = document.getElementById('questionAndExample');
 
 const answers = [
     { answer: "rook to d8" },
@@ -23,8 +23,8 @@ function updateQuestionAndAnswer() {
     answerInput.value = ""; // Clear the answer input field
     resultMessage.textContent = ""; // Clear the result message
     questionNumber.textContent = `Question ${currentQuestionIndex + 1}`; // Display current question number
-    answerInput.style.display = 'block';
-    checkButton.style.display = 'block';
+    answerInput.style.display = 'inline';
+    checkButton.style.display = 'inline';
 }
 
 // Initialize the first question
