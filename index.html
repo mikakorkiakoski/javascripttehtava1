@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Move Checkmate Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>One-Move Checkmate Quiz JavaScript T1 by Mika</h1>
+    <p id="questionNumber">Question 1</p>
+    <p id="questionAndExample">Which one of the white chess pieces should you move and where? Answer below of the photo like this: king to f1</p>
+    <p id="score">Score: 0</p>
+
+    <div class="quiz-container">
+        <div class="question">
+            <img src="images/question1.jpg" alt="Chessboard Question 1">
+        </div>
+        <div class="answer">
+            <input type="text" id="answerInput" placeholder="Your answer...">
+            <button id="checkButton">Submit</button>
+            <p id="resultMessage"></p>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+</body>
+</html>
