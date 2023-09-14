@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One-Move Checkmate Quiz</title>
+    <!-- ... (your existing meta tags and title) ... -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>One-Move Checkmate Quiz JavaScript T1 by Mika</h1>
     <p> I do not own the pictures! Source of pictures: Chess.com</p>
     <p id="questionNumber">Question 1</p>
-    <p id="questionAndExample">Which one of the white chess pieces should you move and where to achieve one-move checkmate? Answer below of the photo like this: king to f1</p>
+    <p id="guide">Select the correct move to achieve one-move checkmate:</p>
     <p id="score">Score: 0</p>
 
     <div class="quiz-container">
@@ -18,10 +16,12 @@
             <img src="images/question1.jpg" alt="Chessboard Question 1">
         </div>
         <div class="answer">
-            <input type="text" id="answerInput" placeholder="Your answer...">
-            <button id="checkButton">Submit</button>
-            <p id="resultMessage"></p>
+            <button id="ButtonA" class="answer-button">A: Rook to d8</button>
+            <button id="ButtonB" class="answer-button">B: Queen to f7</button>
+            <button id="ButtonC" class="answer-button">C: Queen to h7</button>
+            <button id="ButtonD" class="answer-button">D: Queen to g7</button>
         </div>
+        <p id="resultMessage"></p>
     </div>
 
     <script src="chess.js"></script>
