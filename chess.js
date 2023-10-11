@@ -1,3 +1,20 @@
+// Define a base Question class
+class Question {
+    constructor(imageSrc, answerIDs, correctAnswer) {
+        this.imageSrc = imageSrc;
+        this.answerIDs = answerIDs;
+        this.correctAnswer = correctAnswer;
+    }
+}
+
+// Define sub-classes for different types of questions
+class ChessQuestion extends Question {
+    constructor(imageSrc, answerIDs, correctAnswer, buttonTexts) {
+        super(imageSrc, answerIDs, correctAnswer);
+        this.buttonTexts = buttonTexts;
+    }
+}
+
 const questionImage = document.querySelector('.question img');
 const resultMessage = document.getElementById('resultMessage');
 const questionNumber = document.getElementById('questionNumber');
@@ -6,40 +23,15 @@ const guide = document.getElementById('guide');
 const answerButtons = document.querySelectorAll('.answer-button');
 
 const questions = [
-    {
-        imageSrc: 'images/question1.jpg',
-        answerIDs: ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'],
-        correctAnswer: 'ButtonD', // ID of the correct answer button
-    },
-    {
-        imageSrc: 'images/question2.jpg',
-        answerIDs: ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'],
-        correctAnswer: 'ButtonB', // ID of the correct answer button
-    },
-    {
-        imageSrc: 'images/question3.jpg',
-        answerIDs: ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'],
-        correctAnswer: 'ButtonA', // ID of the correct answer button
-    },
-    {
-        imageSrc: 'images/question4.jpg',
-        answerIDs: ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'],
-        correctAnswer: 'ButtonC', // ID of the correct answer button
-    },
-    {
-        imageSrc: 'images/question5.jpg',
-        answerIDs: ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'],
-        correctAnswer: 'ButtonD', // ID of the correct answer button
-    },
+    new ChessQuestion('images/question1.jpg', ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'], 'ButtonD', ["rook to d4", "king to h1", "pawn to g3", "rook to d8"]),
+    new ChessQuestion('images/question2.jpg', ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'], 'ButtonB', ["bishop to a3", "queen to f7", "pawn to e5", "queen to d7"]),
+    new ChessQuestion('images/question3.jpg', ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'], 'ButtonA', ["queen to h7", "bishop to b5", "rook to h3", "queen to g6"]),
+    new ChessQuestion('images/question4.jpg', ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'], 'ButtonC', ["rook to g7", "knight to d6", "queen to g7", "queen to b8"]),
+    new ChessQuestion('images/question5.jpg', ['ButtonA', 'ButtonB', 'ButtonC', 'ButtonD'], 'ButtonD', ["queen to a8", "knight to e6", "pawn to g4", "queen to d8"]),
 ];
 
-const buttonTextsPerQuestion = [
-    ["rook to d4", "king to h1", "pawn to g3", "rook to d8"],
-    ["bishop to a3", "queen to f7", "pawn to e5", "queen to d7"],
-    ["queen to h7", "bishop to b5", "rook to h3", "queen to g6"],
-    ["rook to g7", "knight to d6", "queen to g7", "queen to b8"],
-    ["queen to a5", "knight to e6", "pawn to g4", "queen to d8"],
-];
+
+const buttonTextsPerQuestion = questions.map((question) => question.buttonTexts);
 
 let score = 0;
 let currentQuestionIndex = 0;
@@ -54,7 +46,6 @@ function updateQuestionAndAnswer() {
         button.style.display = 'inline';
     });
 
-    // Update answer buttons with options
     // Update answer buttons with options
     const buttonOptions = buttonTextsPerQuestion[currentQuestionIndex];
     answerButtons.forEach((button, index) => {
@@ -102,7 +93,7 @@ answerButtons.forEach((button) => {
                     button.style.display = 'none'; // Hide the answer buttons
                 });
                 questionNumber.style.display = 'none'; // Hide the question number
-                scoreDisplay.textContent = `Quiz complete! Your score: ${score}/5`;
+                scoreDisplay.textContent = `Quiz complete! Your score: ${score}/${questions.length}`;
                 guide.style.display = 'none';
                 showMessage("");
             }, 4000); // Display the final score after 2 seconds
@@ -116,4 +107,3 @@ answerButtons.forEach((button) => {
 function showMessage(text) {
     resultMessage.textContent = text;
 }
-
